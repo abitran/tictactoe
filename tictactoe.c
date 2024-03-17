@@ -5,9 +5,17 @@
 #define S_WIDTH 800
 #define S_HEIGHT 600
 
+#define ROWS 3 
+#define COLS 3
+
+#define CELLW 266
+#define CELLH 200
+
 int sdlchk(int);
 
 void *sdlpt(void *);
+
+void render_grid(SDL_Renderer *);
 
 int main(int argc, char **argv) {
   sdlchk((SDL_Init(SDL_INIT_VIDEO)));
@@ -31,8 +39,10 @@ int main(int argc, char **argv) {
       }
     }
 
-    sdlchk(SDL_SetRenderDrawColor(renderer, 150, 150, 150, 255));
+    sdlchk(SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255));
     sdlchk(SDL_RenderClear(renderer));
+
+    render_grid(renderer);
 
     SDL_RenderPresent(renderer);
 
@@ -58,3 +68,25 @@ void *sdlpt(void *ptr) {
   }
   return ptr;
 }
+
+void render_grid(SDL_Renderer *renderer) {
+
+  sdlchk(SDL_SetRenderDrawColor(renderer, 30, 30, 30, 255));
+  for (int x = 0; x < ROWS; x++) {
+    sdlchk(SDL_RenderDrawLine(renderer, 
+                       x * CELLW, 
+                       0, 
+                       x * CELLW, S_HEIGHT));
+
+  }
+  for (int y = 0; y < COLS; y++) {
+    sdlchk(SDL_RenderDrawLine(renderer, 
+                              0, 
+                              y * CELLH,
+                              S_WIDTH, 
+                              y * CELLH));
+  }
+}
+
+
+
