@@ -176,8 +176,8 @@ void render_game(SDL_Renderer *renderer, const Game *game) {
 
 void render_running(SDL_Renderer *renderer, const Game *game) {
 
-  render_grid(renderer, game->grid, &PLAYER_O_COLOR, 
-              &PLAYER_X_COLOR);
+  render_grid(renderer, game->grid, &PLAYER_X_COLOR, 
+              &PLAYER_O_COLOR);
   
 }
 
@@ -196,7 +196,14 @@ void render_x(SDL_Renderer *renderer, int row, int col, const SDL_Color *color) 
                 center_y - hatzi_box, 
                 center_x + hatzi_box, 
                 center_y + hatzi_box, 
-                10, color->r, color->g, 
+                20, color->r, color->g, 
+                color->b, 255);
+  thickLineRGBA(renderer, 
+                center_x + hatzi_box, 
+                center_y - hatzi_box, 
+                center_x - hatzi_box, 
+                center_y + hatzi_box, 
+                20, color->r, color->g, 
                 color->b, 255);
 }
 
