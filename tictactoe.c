@@ -189,8 +189,8 @@ void selectsq(Game *game, int row, int col) {
 void render_x(SDL_Renderer *renderer, int row, int col, const SDL_Color *color) {
 
   const float hatzi_box = fmin(CELLW, CELLH) * 0.25;
-  const float center_x = CELLW * 0.5 * col * CELLW;
-  const float center_y = CELLH * 0.5 * row * CELLH;
+  const float center_x = CELLW * 0.5 + col * CELLW;
+  const float center_y = CELLH * 0.5 + row * CELLH;
   thickLineRGBA(renderer, 
                 center_x - hatzi_box, 
                 center_y - hatzi_box, 
