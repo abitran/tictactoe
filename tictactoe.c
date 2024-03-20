@@ -140,7 +140,7 @@ void render_grid(SDL_Renderer *renderer, const int *grid,
         render_o(renderer, i, j, player_o_color);
         break;
       default: {
-      }
+        }
       }
     }
   }
